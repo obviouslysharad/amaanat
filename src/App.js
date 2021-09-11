@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import mySVG from './assets/undraw_Login_re_4vu2.svg';
+import Signin from './components/Signin';
+import Header from './components/Header';
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import AccountDetail from "./components/AccountDetail";
+import AccountListing from './components/AccountListing';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+      <Header />
+      <Switch>
+        <Route path="/" exact component = {AccountListing} />
+        <Route path="/account/:accountId" exact component = {AccountDetail} />
+      </Switch>
+    </Router>
     </div>
-  );
+    // <div className="col container mt-3">
+    //   <div className = "row">
+    //     <div className="col-md-7">
+    //       <img className="img-fluid w-100" src = {mySVG} />
+    //     </div>
+    //     <div className = "col-md-4">
+    //       <Signin />
+    //     </div>
+    //   </div>
+      
+      
+    // </div>
+  )
 }
 
-export default App;
+export default App
